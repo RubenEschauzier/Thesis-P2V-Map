@@ -153,6 +153,7 @@ class Consumer(object):
         data.setdefault("price", [])
         data.setdefault("t", [])
         data.setdefault("basket_id", [])
+        data.setdefault("category", [])
         categories = self.choose_categories()
         for i, choice in enumerate(categories):
             if choice == 1:
@@ -163,6 +164,7 @@ class Consumer(object):
                     data["price"].append(price[x])
                     data["t"].append(week)
                     data["basket_id"].append(basket_id)
+                    data["category"].append(i)
 
         return data
 
@@ -204,5 +206,5 @@ class Consumer(object):
 
 
 if __name__ == "__main__":
-    sim = basket_simulator(20, 15, 20, 1, 20000)
+    sim = basket_simulator(C=20, J_c=15, T=20, I = 1, num_consumers=20000)
     sim.convert_to_dict()

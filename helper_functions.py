@@ -14,11 +14,10 @@ def get_filepath(type_file, file_to_open):
     return file_path
 
 
-
-def create_html(data):
+def create_html(data, filename):
     df = pd.DataFrame(data)
     html = df.style.background_gradient(cmap='coolwarm').set_precision(2).render()
-    text_file = open("index.html", "w")
+    text_file = open(filename, "w")
     text_file.write(html)
     text_file.close()
 
