@@ -47,7 +47,7 @@ def create_vocabulary(basket_in_data):
     for basket_id, basket in basket_in_data.items():
         for element in basket:
             products_in_basket.add(element)
-    with open('vocab_product.txt', 'a') as f:
+    with open('vocab.txt', 'a') as f:
         for product in products_in_basket:
             f.writelines('%s\n' % product)
 

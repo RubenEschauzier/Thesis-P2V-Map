@@ -153,7 +153,7 @@ def create_scatterplot(tsne_df, plot_file_name):
 
     # plot
     fig = go.Figure(data=plot_data, layout=plot_layout)
-    plotly.offline.plot(fig, filename='testt')
+    plotly.offline.plot(fig, filename=plot_file_name)
 
 
 if __name__ == '__main__':
@@ -166,9 +166,9 @@ if __name__ == '__main__':
     product_data = pd.read_excel(r"large_data/products.xlsx")
     product_data.drop(product_data.columns[4:], axis=1, inplace=True)
 
-    products_used = set(np.loadtxt(r'large_data\center_products_extra_filtered', delimiter=",", dtype=np.int32))
-    model_name = "instacart_model_final_filtered.h5"
+    products_used = set(np.loadtxt(r'large_data\center_products_simulated', delimiter=",", dtype=np.int32))
+    model_name = "simulated_test.h5"
     weights, sorted_products = get_input_weights(model_name, products_used)
     tsne_data = get_tsne_embedding(weights)
-    df_to_plot = create_plotting_df_bert(tsne_data, sorted_products)
-    create_scatterplot(df_to_plot, 'instacart_plot_extra')
+    df_to_plot = create_plotting_df_simulated(tsne_data)
+    create_scatterplot(df_to_plot, 'simulated_model_one_emb')
